@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UNITE — Battle Royale</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <main id="lobby" class="screen">
+        <div class="atmosphere"></div>
+        <section class="lobby-side left-panel">
+          <p class="eyebrow">OPERATIONS</p>
+          <button class="menu-card" data-panel="skins"><span>◈</span><b>CHANGE ROOM</b><small>Skins & looks</small></button>
+          <button class="menu-card" data-panel="guns"><span>⌁</span><b>GUNS SHOP</b><small>Permanent arsenal</small></button>
+          <button class="menu-card" data-panel="items"><span>✦</span><b>SHOP</b><small>Battle supplies</small></button>
+          <button class="menu-card" data-panel="upgrades"><span>↑</span><b>GUN UPGRADES</b><small>Improve your loadout</small></button>
+          <button class="menu-card" data-panel="body"><span>⚡</span><b>BODY UPGRADES</b><small>Health, jump, storage</small></button>
+        </section>
+        <section class="hero">
+          <div class="brand">UNI<span>TE</span></div>
+          <p class="tagline">DROP. SURVIVE. UNITE.</p>
+          <div id="skinPreview" class="skin-preview"><div class="head"></div><div class="torso"></div><div class="legs"></div></div>
+          <p id="skinName">Ranger skin equipped</p>
+          <div class="mode-select"><button class="mode active" data-mode="ffa">FREE FOR ALL</button><button class="mode" data-mode="team">TEAM MODE <small>5 players</small></button></div>
+          <button id="playButton" class="play-button">DEPLOY <span>▶</span></button>
+          <p class="hint">WASD move · Mouse aim/shoot · E grenade · F loot · N map · F5 view · ESC menu</p>
+        </section>
+        <section class="lobby-side right-panel">
+          <div class="coin-card"><span class="coin">◉</span><div><small>UNITE COINS</small><strong id="coinBalance">750</strong></div></div>
+          <div class="account-card"><span class="rank">12</span><div><b>RANGER</b><small>Level 12</small></div></div>
+          <div class="loadout-card"><p>STARTING LOADOUT</p><strong>Normal AK</strong><small>Medium range · 2 / 3 DMG</small></div>
+        </section>
+      </main>
+
+      <section id="shopModal" class="modal hidden"><div class="modal-card"><button class="close">×</button><p class="eyebrow" id="modalEyebrow">ARMORY</p><h2 id="modalTitle">SHOP</h2><div id="shopContent" class="shop-grid"></div></div></section>
+
+      <main id="game" class="screen hidden">
+        <canvas id="gameCanvas"></canvas>
+        <div class="hud top"><div id="modeHud">FREE FOR ALL</div><div id="aliveHud">ALIVE: 20</div><div id="timerHud">STORM: 01:30</div></div>
+        <div class="hud left-hud"><div class="bar-label">HEALTH <b id="healthText">100</b></div><div class="bar health"><i id="healthBar"></i></div><div class="bar-label">SHIELD <b id="shieldText">0</b></div><div class="bar shield"><i id="shieldBar"></i></div><div id="effects"></div></div>
+        <div class="hud weapon-hud"><div id="weaponName">NORMAL AK</div><div class="ammo"><b id="ammoText">30</b><span>/ ∞</span></div><div class="weapon-help">1 AK · 2 SHOTGUN · 3 SNIPER · E GRENADE</div></div>
+        <div id="minimap"><canvas id="mapCanvas" width="170" height="170"></canvas><span>N</span></div>
+        <div id="prompt" class="prompt hidden"></div>
+        <div id="killFeed"></div>
+        <div id="crosshair">+</div>
+        <div id="escMenu" class="escape hidden"><div><h2>PAUSED</h2><button id="resume">RESUME</button><button id="settings">SETTINGS</button><button id="leave">LEAVE MATCH</button></div></div>
+        <div id="settingsPanel" class="settings hidden"><h2>SETTINGS</h2><label>Music <input id="music" type="range" min="0" max="100" value="50"></label><label>Keyboard layout <select><option>WASD</option><option>Arrow keys</option></select></label><button id="settingsBack">BACK</button></div>
+        <div id="gameOver" class="game-over hidden"><h1 id="gameOverTitle">ELIMINATED</h1><p id="gameOverText"></p><button id="returnLobby">RETURN TO TITLE</button></div>
+      </main>
+    </div>
+    <script src="game.js"></script>
+  </body>
+</html>
